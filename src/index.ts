@@ -1,6 +1,7 @@
 import { CommonParams, PlanType, listOfTables } from './types'
 import axios from 'axios'
 import { BASE_URL } from './static'
+import Table from './Table'
 class Databar {
   apiKey: string
   constructor(apiKey: string) {
@@ -17,8 +18,9 @@ class Databar {
     return data
   }
 
-  public async getTable(tableId: string) {
-    const results = await this.makeRequest('/tables')
+  public getTable(tableId: number): Table {
+    const results = new Table(this.apiKey, tableId)
+    return results
   }
 
   public async getPlanInfo(): Promise<PlanType> {

@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { CommonParams } from './types'
 import { BASE_URL } from './static'
+import DataFrame from 'dataframe-js'
 
 class Table {
   apiKey: string
@@ -22,6 +23,7 @@ class Table {
 
   public async getColumns() {
     const result = await this.makeRequest('columns')
+    return result
   }
 
   public async getRows() {
@@ -32,6 +34,13 @@ class Table {
   public async getTableInfo() {
     const result = await this.makeRequest('')
     return result
+  }
+
+  public async getDataFrame() {
+    const rows = await this.getRows()
+    const columns = await this.getColumns()
+    const df = new DataFrame(rows, columns)
+    return df
   }
 }
 
