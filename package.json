@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "type": "module",
   "scripts": {
-    "build": "npm run prettier:write && tsc -p .",
+    "build": " tsc -p .",
     "test": "node --experimental-specifier-resolution=node test.js",
     "prettier:base": "prettier --parser typescript --single-quote",
     "prettier:check": "npm run prettier:base -- --list-different \"src/**/*.ts\"",

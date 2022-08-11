@@ -12,9 +12,9 @@ class Table {
   }
 
   private async makeRequest(url: string, params?: CommonParams) {
-    const { data } = await axios.get(`${BASE_URL}/${this.tableId}/${url}`, {
+    const { data } = await axios.get(`${BASE_URL}/tables/${this.tableId}/${url}`, {
       headers: {
-        'X-APIKey': 'r5e8G6yTRE4nmoB3XAjtLN*KYlfaqHdb2zxO9FQUCp+SP-k1'
+        'X-APIKey': this.apiKey
       },
       params: params || {}
     })
