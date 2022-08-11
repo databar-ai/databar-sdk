@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "description": "databar sdk",
   "main": "lib/index.js",
-  "types": "lib",
+  "type": "module",
   "scripts": {
     "build": "npm run prettier:write && tsc -p .",
+    "test": "node --experimental-specifier-resolution=node test.js",
     "prettier:base": "prettier --parser typescript --single-quote",
     "prettier:check": "npm run prettier:base -- --list-different \"src/**/*.ts\"",
     "prettier:write": "npm run prettier:base -- --write \"src/**/*.ts\""
@@ -30,6 +31,7 @@
   "devDependencies": {
     "@types/dataframe-js": "^1.4.0",
     "@types/lodash": "^4.14.168",
+    "dotenv": "^16.0.1",
     "husky": "^7.0.1",
     "lint-staged": "^10.2.10",
     "prettier": "^2.0.5",
