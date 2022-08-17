@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "build": " tsc -p .",
-    "test": "node --experimental-specifier-resolution=node test.js",
+    "test": "npm run build && node --experimental-specifier-resolution=node test.js",
     "prettier:base": "prettier --parser typescript --single-quote",
     "prettier:check": "npm run prettier:base -- --list-different \"src/**/*.ts\"",
     "prettier:write": "npm run prettier:base -- --write \"src/**/*.ts\""

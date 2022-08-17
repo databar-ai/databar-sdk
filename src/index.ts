@@ -1,4 +1,9 @@
-import { CommonParams, PlanType, listOfTables } from './types'
+import { 
+  CommonParams, 
+  PlanType, 
+  listOfTables, 
+  ColumnTypes
+} from './types'
 import axios from 'axios'
 import { BASE_URL } from './static'
 import Table from './Table'
@@ -28,13 +33,18 @@ class Databar {
     return results
   }
 
-  public async listOfTables(userParams?: listOfTables) {
+  public async listOfTables(userParams?: listOfTables):Promise<listOfTables> {
     const params = userParams || {
       page: 1,
       per_page: 100
     }
     const results = await this.makeRequest('/tables', params)
     return results
+  }
+
+  public async getColumnTypes ():Promise<ColumnTypes> {
+    const result = await this.makeRequest('column-types')
+    return result
   }
 }
 

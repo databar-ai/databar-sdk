@@ -1,5 +1,10 @@
 import axios from 'axios'
-import { CommonParams } from './types'
+import { 
+  CommonParams, 
+  TableColumns,
+  TableRows,
+  TableInfo
+} from './types'
 import { BASE_URL } from './static'
 import DataFrame from 'dataframe-js'
 
@@ -21,17 +26,17 @@ class Table {
     return data
   }
 
-  public async getColumns() {
+  public async getColumns():Promise<TableColumns[]> {
     const result = await this.makeRequest('columns')
     return result
   }
 
-  public async getRows() {
+  public async getRows():Promise<TableRows> {
     const result = await this.makeRequest('rows')
     return result
   }
 
-  public async getTableInfo() {
+  public async getTableInfo():Promise<TableInfo> {
     const result = await this.makeRequest('')
     return result
   }
@@ -39,6 +44,7 @@ class Table {
   public async getDataFrame() {
     const rows = await this.getRows()
     const columns = await this.getColumns()
+    console.log('DF:', rows, columns)
     const df = new DataFrame(rows, columns)
     return df
   }
