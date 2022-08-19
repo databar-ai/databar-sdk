@@ -6,7 +6,7 @@ import {
   TableInfo
 } from './types'
 import { BASE_URL } from './static'
-import DataFrame from 'dataframe-js'
+import { DataFrame } from "dataframe-js";
 
 class Table {
   apiKey: string
@@ -42,11 +42,32 @@ class Table {
   }
 
   public async getDataFrame() {
+    try {
     const rows = await this.getRows()
     const columns = await this.getColumns()
-    console.log('DF:', rows, columns)
-    const df = new DataFrame(rows, columns)
+    const columnsName = columns.map((el) => el.name)
+    const {result:rowsResult} = rows
+    const columnsRowMapping:CommonParams = {};
+    columns.forEach((column) => {
+      columnsRowMapping[column.internal_name] = column.name;
+    });
+    const rowsData = rowsResult.map((row) => {
+      const { id } = row;
+      const { data } = row;
+      const newObj:CommonParams = {};
+      Object.keys(data).forEach((el) => {
+        const elMapping = columnsRowMapping[el];
+        if (elMapping) {
+          newObj[elMapping] = data[el];
+        }
+      });
+      return { id, ...newObj };
+    })
+    const df = new DataFrame(rowsData, columnsName)
     return df
+  } catch (e) {
+    console.log("Error:", e)
+  }
   }
 }
 
