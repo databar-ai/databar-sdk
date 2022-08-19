@@ -10,7 +10,7 @@ const performDatabarActions = async () => {
   console.log("Table:", table)
   try {
     const tablePanda = await table.getDataFrame()
-    console.log('Table Panda', tablePanda)
+    console.log('Table Panda df', tablePanda)
   } catch (e) {
     console.log(e)
   }

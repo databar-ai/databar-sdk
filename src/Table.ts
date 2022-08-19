@@ -41,7 +41,7 @@ class Table {
     return result
   }
 
-  public async getDataFrame() {
+  public async getDataFrame():Promise<DataFrame | undefined> {
     try {
     const rows = await this.getRows()
     const columns = await this.getColumns()
