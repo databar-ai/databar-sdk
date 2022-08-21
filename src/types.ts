@@ -8,7 +8,12 @@ export interface PlanType {
   count_of_tables: number
 }
 
-export interface listOfTables {
+export interface ListOfTablesParams { 
+      page: number,
+      per_page: number
+}
+
+export interface ListOfTables {
   page: number
   per_page: number
   dataset_id_based_on:number
