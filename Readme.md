@@ -20,7 +20,7 @@ npm install databar
 
 ### Intialization 
 
-I
+
 ```
 import Databar from 'databar'
 ```
