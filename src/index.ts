@@ -1,7 +1,8 @@
 import { 
   CommonParams, 
   PlanType, 
-  listOfTables, 
+  ListOfTables, 
+  ListOfTablesParams,
   ColumnTypes
 } from './types'
 import axios from 'axios'
@@ -33,7 +34,7 @@ class Databar {
     return results
   }
 
-  public async listOfTables(userParams?: listOfTables):Promise<listOfTables> {
+  public async listOfTables(userParams?: ListOfTables):Promise<ListOfTablesParams> {
     const params = userParams || {
       page: 1,
       per_page: 100
