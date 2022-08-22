@@ -8,15 +8,15 @@ export interface PlanType {
   count_of_tables: number
 }
 
-export interface ListOfTablesParams { 
-      page: number,
-      per_page: number
+export interface ListOfTablesParams {
+  page: number
+  per_page: number
 }
 
 interface Tables {
   page: number
   per_page: number
-  dataset_id_based_on:number
+  dataset_id_based_on: number
   total_cost: number
   used_storage: number
   created_at: string
@@ -32,8 +32,7 @@ export interface ListOfTables {
   results: Array<Tables>
 }
 
-
-export type ColumnTypes = {[key:string]:any}
+export type ColumnTypes = { [key: string]: any }
 
 export interface Table {
   id: number
@@ -46,19 +45,19 @@ export interface TableRows {
 }
 
 export interface TableInfo {
-  id:number;
-  name:string;
+  id: number
+  name: string
   dataset_id_based_on: number
-  total_cost:number
+  total_cost: number
   used_storage: number
   created_at: string
-  status: string;
+  status: string
   is_scheduled: boolean
-  operations: {[key:string]:any}
+  operations: { [key: string]: any }
 }
 export interface ConfigColumns {
-  hide: {[key:string]: any};
-  style:  {[key:string]: any};
+  hide: { [key: string]: any }
+  style: { [key: string]: any }
 }
 
 export interface TableColumns {
@@ -69,4 +68,18 @@ export interface TableColumns {
   enrichment_id: string | null
   color: string | null
   config: ConfigColumns
+}
+
+export interface TableAppendData {
+  parameters: CommonParams
+  pagination?: number
+  authorization_id?: number
+}
+
+//TODO: Type is incorrect
+export interface ListOfApiKeys {
+  count: number
+  next: any
+  previousAny: any
+  results: Array<any>
 }
