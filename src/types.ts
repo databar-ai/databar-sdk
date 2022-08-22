@@ -13,7 +13,7 @@ export interface ListOfTablesParams {
       per_page: number
 }
 
-export interface ListOfTables {
+interface Tables {
   page: number
   per_page: number
   dataset_id_based_on:number
@@ -24,6 +24,14 @@ export interface ListOfTables {
   is_scheduled: boolean
   operations: any
 }
+
+export interface ListOfTables {
+  count: number
+  next: any //TODO: Incorrect Type
+  previous: any //TODO: Incorrect Type
+  results: Array<Tables>
+}
+
 
 export type ColumnTypes = {[key:string]:any}
 

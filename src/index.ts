@@ -34,18 +34,13 @@ class Databar {
     return results
   }
 
-  public async listOfTables(userParams?: ListOfTables):Promise<ListOfTablesParams> {
+  public async getListOfTables(userParams?: ListOfTablesParams):Promise<ListOfTables> {
     const params = userParams || {
       page: 1,
       per_page: 100
     }
     const results = await this.makeRequest('/tables', params)
     return results
-  }
-
-  public async getColumnTypes ():Promise<ColumnTypes> {
-    const result = await this.makeRequest('column-types')
-    return result
   }
 }
 

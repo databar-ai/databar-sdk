@@ -37,7 +37,7 @@ const databarInstance = new Databar(apiKey)
 ### Get list of all tables
 
 ```
-const listOfAllTables = databarInstance.listOfTables();
+const listOfAllTables = databarInstance.getListOfTables();
 ```
 
 List of tables also take optional params as an object, type for which is 
@@ -51,7 +51,7 @@ export interface ListOfTablesParams {
 
 #### Return type 
 ```
-export interface ListOfTables {
+export interface Tables {
   page: number
   per_page: number
   dataset_id_based_on:number
@@ -61,6 +61,13 @@ export interface ListOfTables {
   status: string
   is_scheduled: boolean
   operations: any
+}
+
+export interface ListOfTables {
+  count: number
+  next: any //TODO: Incorrect Type
+  previous: any //TODO: Incorrect Type
+  results: Array<Tables>
 }
 ```
 
