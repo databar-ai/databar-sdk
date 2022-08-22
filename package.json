@@ -1,6 +1,6 @@
 {
   "name": "databar-sdk",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "databar sdk",
   "main": "lib/index.js",
   "scripts": {
@@ -23,7 +23,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/blendtale/images-map"
+    "url": "git+https://github.com/databar-ai/databar-sdk"
   },
   "author": "",
   "license": "ISC",

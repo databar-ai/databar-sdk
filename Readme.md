@@ -1,38 +1,36 @@
-# Databar Javascript 
+# Databar Javascript
 
-## Overview 
+## Overview
 
 The SDK allows you to query tables that you’ve already created via the databar.ai UI. You can also create new rows in existing tables and get meta-data about your tables. All enrichments and automations that you set up will show up when you query your table via this SDK.
 
 Please note, you cannot yet create new tables with the SDK. If you’d like us to add this feature, please let us know via our [Discord](https://discord.gg/nUN4w2eVNK).
 
-## QuickStart 
+## QuickStart
 
-### Installation 
-
-```
-yarn install databar
-```
+### Installation
 
 ```
-npm install databar
+yarn add databar-sdk
 ```
 
-### Intialization 
+```
+npm i databar-sdk
+```
 
+### Intialization
 
 ```
 import Databar from 'databar'
 ```
 
-
-and then in code, intial databar like this 
+and then in code, intial databar like this
 
 ```
 const databarInstance = new Databar(apiKey)
 ```
 
-## API's/Method 
+## API's/Method
 
 ### Get list of all tables
 
@@ -40,16 +38,17 @@ const databarInstance = new Databar(apiKey)
 const listOfAllTables = databarInstance.getListOfTables();
 ```
 
-List of tables also take optional params as an object, type for which is 
+List of tables also take optional params as an object, type for which is
 
 ```
-export interface ListOfTablesParams { 
+export interface ListOfTablesParams {
       page: number,
       per_page: number
 }
 ```
 
-#### Return type 
+#### Return type
+
 ```
 export interface Tables {
   page: number
@@ -71,14 +70,13 @@ export interface ListOfTables {
 }
 ```
 
-
-### Get Plan info 
+### Get Plan info
 
 ```
 const planInfo = databarInstance.getPlanInfo();
 ```
 
-#### Return type 
+#### Return type
 
 ```
 export interface PlanType {
@@ -90,15 +88,15 @@ export interface PlanType {
 }
 ```
 
-## Methods/API for specific method 
+## Methods/API for specific method
 
-1. Get instance of specific table by doing this 
+1. Get instance of specific table by doing this
 
 ```
 const table = databarInstance.getTable(tableId)
 ```
 
-**Note:** You can get the specific table ID by calling `Get list of all tables` method 
+**Note:** You can get the specific table ID by calling `Get list of all tables` method
 
 ### Get Columns
 
@@ -106,10 +104,9 @@ const table = databarInstance.getTable(tableId)
 const columns = table.getColumns()
 ```
 
-This should return all the colums for your table. 
+This should return all the colums for your table.
 
-
-#### Return Type 
+#### Return Type
 
 ```
 export interface TableColumns {
@@ -129,7 +126,7 @@ export interface TableColumns {
 const rows = table.getRows()
 ```
 
-#### Return Type 
+#### Return Type
 
 ```
   has_next_page: boolean
@@ -137,14 +134,13 @@ const rows = table.getRows()
   result: Array<any>
 ```
 
-
-### Get Table Info 
+### Get Table Info
 
 ```
 const tableInfo = table.getTableInfo()
 ```
 
-#### Return type 
+#### Return type
 
 ```
 export interface TableInfo {
@@ -160,15 +156,15 @@ export interface TableInfo {
 }
 ```
 
-
-### Get DataFrame 
+### Get DataFrame
 
 ```
 const tableDataFrame = table.getDataFrame()
 ```
-We use [dataFrame package](https://www.npmjs.com/package/dataframe-js) to create data frame. 
 
-You can get the data in required shape for example in case of Json, you can do something like this 
+We use [dataFrame package](https://www.npmjs.com/package/dataframe-js) to create data frame.
+
+You can get the data in required shape for example in case of Json, you can do something like this
 
 ```
 const tableDataFrame = table.getDataFrame().toJson()
