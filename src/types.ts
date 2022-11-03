@@ -35,7 +35,7 @@ export interface ListOfTables {
 export type ColumnTypes = { [key: string]: any }
 
 export interface Table {
-  id: number
+  identifier: string
   name: string
 }
 export interface TableRows {
@@ -45,7 +45,7 @@ export interface TableRows {
 }
 
 export interface TableInfo {
-  id: number
+  identifier: string
   name: string
   dataset_id_based_on: number
   total_cost: number
