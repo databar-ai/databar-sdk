@@ -1,7 +1,7 @@
 import axios from 'axios'
-import { CommonParams, TableColumns, TableRows, TableInfo, TableAppendData } from './types'
-import { BASE_URL_V3 } from './static'
 import { DataFrame } from 'dataframe-js'
+import { BASE_URL_V3 } from './static'
+import { CommonParams, TableAppendData, TableColumns, TableInfo, TableRows } from './types'
 
 class Table {
   apiKey: string

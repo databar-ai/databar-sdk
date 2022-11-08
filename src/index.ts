@@ -1,7 +1,8 @@
-import { CommonParams, PlanType, ListOfTables, ListOfTablesParams, ColumnTypes } from './types'
 import axios from 'axios'
 import { BASE_URL_V2, BASE_URL_V3 } from './static'
 import Table from './Table'
+import { CommonParams, ListOfTables, ListOfTablesParams, PlanType } from './types'
+
 class Databar {
   apiKey: string
   constructor(apiKey: string) {
@@ -9,7 +10,7 @@ class Databar {
   }
 
   private async makeRequest(base_url: string, url: string, params?: CommonParams) {
-    const { data } = await axios.get(`${base_url}/${url}`, {
+    const { data } = await axios.get(`${base_url}${url}`, {
       headers: {
         'X-APIKey': this.apiKey
       },
@@ -33,7 +34,7 @@ class Databar {
   }
 
   public async getPlanInfo(): Promise<PlanType> {
-    const results = await this.makeRequest(BASE_URL_V2, 'users/plan-info/')
+    const results = await this.makeRequest(BASE_URL_V2, '/users/plan-info/')
     return results
   }
 
