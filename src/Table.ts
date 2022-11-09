@@ -1,18 +1,18 @@
 import axios from 'axios'
-import { CommonParams, TableColumns, TableRows, TableInfo, TableAppendData } from './types'
-import { BASE_URL } from './static'
 import { DataFrame } from 'dataframe-js'
+import { BASE_URL_V3 } from './static'
+import { CommonParams, TableAppendData, TableColumns, TableInfo, TableRows } from './types'
 
 class Table {
   apiKey: string
-  tableId: number
-  constructor(apiKey: string, tableId: number) {
+  tableId: string
+  constructor(apiKey: string, tableId: string) {
     this.apiKey = apiKey
     this.tableId = tableId
   }
 
   private async makeGetRequest(url: string, params?: CommonParams) {
-    const { data } = await axios.get(`${BASE_URL}/tables/${this.tableId}/${url}`, {
+    const { data } = await axios.get(`${BASE_URL_V3}/tables/${this.tableId}/${url}`, {
       headers: {
         'X-APIKey': this.apiKey
       },
@@ -22,7 +22,7 @@ class Table {
   }
 
   private async makePostRequest(url: string, params: CommonParams) {
-    const { data } = await axios.post(`${BASE_URL}/tables/${this.tableId}/${url}`, {
+    const { data } = await axios.post(`${BASE_URL_V3}/tables/${this.tableId}/${url}`, {
       headers: {
         'X-APIKey': this.apiKey
       },

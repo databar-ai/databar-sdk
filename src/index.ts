@@ -1,15 +1,16 @@
-import { CommonParams, PlanType, ListOfTables, ListOfTablesParams, ColumnTypes } from './types'
 import axios from 'axios'
-import { BASE_URL } from './static'
+import { BASE_URL_V2, BASE_URL_V3 } from './static'
 import Table from './Table'
+import { CommonParams, ListOfTables, ListOfTablesParams, PlanType } from './types'
+
 class Databar {
   apiKey: string
   constructor(apiKey: string) {
     this.apiKey = apiKey
   }
 
-  private async makeRequest(url: string, params?: CommonParams) {
-    const { data } = await axios.get(`${BASE_URL}/${url}`, {
+  private async makeRequest(base_url: string, url: string, params?: CommonParams) {
+    const { data } = await axios.get(`${base_url}${url}`, {
       headers: {
         'X-APIKey': this.apiKey
       },
@@ -18,7 +19,7 @@ class Databar {
     return data
   }
 
-  public getTable(tableId: number): Table {
+  public getTable(tableId: string): Table {
     const results = new Table(this.apiKey, tableId)
     return results
   }
@@ -28,12 +29,12 @@ class Databar {
       page: 1,
       per_page: 100
     }
-    const result = await this.makeRequest('/apikeys', params)
+    const result = await this.makeRequest(BASE_URL_V2, '/apikeys', params)
     return result
   }
 
   public async getPlanInfo(): Promise<PlanType> {
-    const results = await this.makeRequest('users/plan-info/')
+    const results = await this.makeRequest(BASE_URL_V2, '/users/plan-info/')
     return results
   }
 
@@ -42,7 +43,7 @@ class Databar {
       page: 1,
       per_page: 100
     }
-    const results = await this.makeRequest('/tables', params)
+    const results = await this.makeRequest(BASE_URL_V3, '/tables', params)
     return results
   }
 }
